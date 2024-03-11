@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GraficosNetCore</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GraficosNetCore.styles.css" asp-append-version="true" />
+    <style>
+        body {
+            font-family: "Arial", cursive;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container1 {
+            height: 100vh;
+        }
+
+        .side-nav,
+        .nav-menu {
+            height: 100%;
+        }
+
+            .side-nav .nav-menu {
+                list-style: none;
+                padding: 40px 0;
+                width: 250px;
+                background-color: #3498db;
+            }
+
+            .side-nav .nav-item {
+                position: relative;
+                padding: 10px 20px;
+            }
+
+        .nav-item.active {
+            background-color: #fff;
+            box-shadow: 0px -3px rgba(0, 0, 0, 0.2), 0px 3px rgba(0, 0, 0, 0.2);
+        }
+
+            .nav-item.active a {
+                color: #2980b9;
+            }
+
+        .nav-item a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .menu-text {
+            padding: 0 20px;
+        }
+
+        .side-nav .nav-item.active::before {
+            content: "";
+            position: absolute;
+            background-color: transparent;
+            bottom: 100%;
+            right: 0;
+            height: 150%;
+            width: 20px;
+            border-bottom-right-radius: 25px;
+            box-shadow: 0 20px 0 0 #fff;
+        }
+
+        .side-nav .nav-item.active::after {
+            content: "";
+            position: absolute;
+            background-color: transparent;
+            top: 100%;
+            right: 0;
+            height: 150%;
+            width: 20px;
+            border-top-right-radius: 25px;
+            box-shadow: 0 -20px 0 0 #fff;
+        }
+       
+    </style>  
+</head>
+<body>
+    <div class="d-flex">
+        <header>
+
+            <div class="container1">
+                <nav class="side-nav">
+                    <ul class="nav-menu">
+                        <li class="nav-item"><a href="/Grafico/Index"><i class="fas fa-tachometer-alt"></i><span class="menu-text">Inicio Grafico</span></a></li>
+                        <li class="nav-item"><a href="/Grafico/GraficoBarra"><i class="fas fa-user"></i><span class="menu-text">Grafico Barra</span></a></li>
+                        <li class="nav-item"><a href="#"><i class="fas fa-file-alt"></i><span class="menu-text">Item 3</span></a></li>
+                        <li class="nav-item"><a href="#"><i class="fas fa-play "></i><span class="menu-text">Item 4</span></a></li>
+                        <li class="nav-item"><a href="#"><i class="fas fa-sign-out-alt"></i><span class="menu-text">Item 5</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+
+        </header>
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+            <input type="hidden" id="hdfOculto" value="@Url.Content("~")" />
+
+
+            <div id="divLoading" style="display:none;background-image:url(../img/loading.gif);position:absolute;top:0;left:0;
+            width:100%;height:100%;
+             background-repeat:no-repeat;background-position:center;z-index:2000">
+            </div>
+
+
+        </div>
+    </div>
+    
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - GraficosNetCore - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
